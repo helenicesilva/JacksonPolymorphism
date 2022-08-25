@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  wiremock:
+    image: 'holomekc/wiremock-gui:latest'
+    container_name: my_wiremock_test
+    ports:
+      - '9001:8080'
+    volumes:
+      - './wiremock/:/home/wiremock/storage'
+    environment:
+      WIREMOCK_OPTIONS: "--port=8080,--max-request-journal=1000,--local-response-templating,--root-dir=/home/wiremock/storage"

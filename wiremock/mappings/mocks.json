@@ -1,0 +1,57 @@
+{
+  "mappings": [
+  {
+    "request": {
+      "method": "GET",
+      "url": "/loans"
+    },
+    "response": {
+      "status": 200,
+      "jsonBody": {
+        "id": "1515",
+        "name": "Helenice",
+        "status": "PAID"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  {
+    "request": {
+      "method": "GET",
+      "url": "/loanComplete"
+    },
+    "response": {
+      "status": 200,
+      "jsonBody": {
+        "instanceOf": "CompleteGroupedLoans",
+        "id": "1515",
+        "name": "Helenice",
+        "number": "TRES"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  {
+    "request": {
+      "method": "GET",
+      "url": "/loanBasic"
+    },
+    "response": {
+      "status": 200,
+      "jsonBody": {
+        "instanceOf": "BasicLoan",
+        "id": "1515",
+        "name": "Helenice",
+        "status": "OPEN"
+      },
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+]
+}

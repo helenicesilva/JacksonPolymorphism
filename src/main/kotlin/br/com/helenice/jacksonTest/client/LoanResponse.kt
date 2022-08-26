@@ -5,26 +5,25 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME,
     include = JsonTypeInfo.As.PROPERTY, property = "instanceOf",
-    defaultImpl = BasicLoan::class)
+    defaultImpl = LoanResponse.BasicLoan::class)
 @JsonSubTypes(
-    JsonSubTypes.Type(BasicLoan::class, name = "BasicLoan"),
-    JsonSubTypes.Type(GroupedLoan::class, name = "CompleteGroupedLoans")
+    JsonSubTypes.Type(LoanResponse.BasicLoan::class, name = "BasicLoan"),
+    JsonSubTypes.Type(LoanResponse.GroupedLoan::class, name = "CompleteGroupedLoans")
 )
-sealed class LoanResponse(
-    open val id: String,
-    open val name: String
-    )
-
+sealed interface LoanResponse {
+    val id: String
+    val name: String
     data class BasicLoan(
         override val id: String,
         override val name: String,
         val status: String,
-    ): LoanResponse(id, name)
+    ) : LoanResponse
 
     data class GroupedLoan(
         override val id: String,
         override val name: String,
         val number: String,
-    ): LoanResponse(id, name)
+    ) : LoanResponse
+}
 
 
